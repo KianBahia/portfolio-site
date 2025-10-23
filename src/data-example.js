@@ -125,4 +125,3 @@ export const aboutData = {
     // ... add more certificates
   ],
 };
-
