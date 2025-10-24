@@ -17,8 +17,8 @@ const About = ({ aboutData }) => {
         <div className="mb-16">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* Who I Am Card - Large */}
-            <div className="lg:col-span-2">
-              <div className="bg-gradient-to-br from-[var(--primary-20)] to-[var(--secondary-20)] rounded-2xl border-2 border-[var(--primary-30)] backdrop-blur-sm p-8 hover:border-[var(--primary-color)]/50 transition-all duration-300 hover:transform hover:scale-105">
+            <div className="lg:col-span-2 order-1">
+              <div className="bg-gradient-to-br from-[var(--primary-20)] to-[var(--secondary-20)] rounded-2xl border-2 border-[var(--primary-30)] backdrop-blur-sm p-8 hover:border-[var(--primary-color)]/50 transition-all duration-300 hover:transform hover:scale-105 h-full">
                 <h3 className="text-2xl font-bold text-white mb-4">Who I Am</h3>
                 <p className="text-gray-300 leading-relaxed whitespace-pre-line">
                   {aboutData.bio}
@@ -26,8 +26,34 @@ const About = ({ aboutData }) => {
               </div>
             </div>
 
+            {/* Skills Card - Full width below on desktop, second on mobile */}
+            <div className="lg:col-span-3 order-2 lg:order-3">
+              <div className="bg-gradient-to-br from-[var(--primary-20)] to-[var(--secondary-20)] rounded-2xl border-2 border-[var(--primary-30)] backdrop-blur-sm p-8 hover:border-[var(--primary-color)]/50 transition-all duration-300 hover:transform hover:scale-105">
+                <h3 className="text-2xl font-bold text-white mb-6">Skills</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {aboutData.skills.map((skillCategory, index) => (
+                    <div key={index} className="space-y-3">
+                      <h4 className="text-lg font-semibold text-[var(--primary-color)]">
+                        {skillCategory.category}
+                      </h4>
+                      <div className="flex flex-wrap gap-2">
+                        {skillCategory.items.map((skill, idx) => (
+                          <span
+                            key={idx}
+                            className="px-3 py-1 bg-red-900/20 text-red-200 rounded-lg text-sm font-medium border border-red-500/20"
+                          >
+                            {skill}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
             {/* Hobbies & Interests Card */}
-            <div className="lg:col-span-1">
+            <div className="lg:col-span-1 order-3 lg:order-2">
               <div className="bg-gradient-to-br from-[var(--primary-20)] to-[var(--secondary-20)] rounded-2xl border-2 border-[var(--primary-30)] backdrop-blur-sm p-6 hover:border-[var(--primary-color)]/50 transition-all duration-300 hover:transform hover:scale-105 h-full">
                 <h3 className="text-xl font-bold text-white mb-4">
                   Hobbies & Interests
@@ -61,32 +87,6 @@ const About = ({ aboutData }) => {
                       </div>
                     ))}
                   </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Skills Card - Full width below */}
-            <div className="lg:col-span-3">
-              <div className="bg-gradient-to-br from-[var(--primary-20)] to-[var(--secondary-20)] rounded-2xl border-2 border-[var(--primary-30)] backdrop-blur-sm p-8 hover:border-[var(--primary-color)]/50 transition-all duration-300 hover:transform hover:scale-105">
-                <h3 className="text-2xl font-bold text-white mb-6">Skills</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {aboutData.skills.map((skillCategory, index) => (
-                    <div key={index} className="space-y-3">
-                      <h4 className="text-lg font-semibold text-[var(--primary-color)]">
-                        {skillCategory.category}
-                      </h4>
-                      <div className="flex flex-wrap gap-2">
-                        {skillCategory.items.map((skill, idx) => (
-                          <span
-                            key={idx}
-                            className="px-3 py-1 bg-red-900/20 text-red-200 rounded-lg text-sm font-medium border border-red-500/20"
-                          >
-                            {skill}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  ))}
                 </div>
               </div>
             </div>

@@ -118,7 +118,15 @@ const Navbar = () => {
           {/* Mobile Menu */}
           {isOpen && (
             <div className="md:hidden mt-4 pb-4">
-              <div className="flex flex-col gap-3">
+              <div
+                className="flex flex-col gap-3 rounded-2xl px-6 py-4"
+                style={{
+                  backgroundColor: "hsla(0, 0%, 100%, 0.15)",
+                  boxShadow: "0 0 0 0.1em hsla(0, 0%, 100%, 0.3) inset",
+                  backdropFilter: "blur(0.75em)",
+                  WebkitBackdropFilter: "blur(0.75em)",
+                }}
+              >
                 <button
                   onClick={() => scrollToSection("home")}
                   className="text-white/90 hover:text-white hover:font-bold transition-all duration-200 text-sm font-medium w-full text-left py-2"

@@ -10,8 +10,7 @@ const Projects = ({ projects }) => {
             My Projects
           </h2>
           <p className="text-lg text-gray-300 max-w-2xl mx-auto">
-            Here are some of the projects I've worked on. Each one represents a
-            unique challenge and learning experience.
+            Here are some of the projects I've worked on.
           </p>
         </div>
 

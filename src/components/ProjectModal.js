@@ -77,7 +77,7 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
       />
 
       {/* Modal Content */}
-      <div className="relative w-full max-w-6xl max-h-[90vh] bg-gradient-to-br from-[var(--primary-40)] to-[var(--secondary-40)] rounded-2xl border-2 border-[var(--primary-color)]/50 backdrop-blur-md overflow-hidden shadow-2xl">
+      <div className="relative w-full max-w-6xl h-[80vh] md:h-[75vh] lg:h-[70vh] max-h-[90vh] bg-gradient-to-br from-[var(--primary-40)] to-[var(--secondary-40)] rounded-2xl border-2 border-[var(--primary-color)]/50 backdrop-blur-md overflow-hidden shadow-2xl">
         {/* Additional overlay for better readability */}
         <div className="absolute inset-0 bg-black/20 rounded-2xl pointer-events-none"></div>
         {/* Close Button */}
@@ -100,7 +100,7 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
           </svg>
         </button>
 
-        <div className="flex flex-col lg:flex-row h-[600px] relative z-10">
+        <div className="flex flex-col lg:flex-row h-full relative z-10">
           {/* Left Side - Image Gallery or PDF Viewer */}
           <div className="lg:w-1/2 relative">
             {project.pdfUrl ? (
@@ -109,12 +109,45 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
                 <PDFViewer pdfUrl={project.pdfUrl} title={project.title} />
               </div>
             ) : currentImage ? (
-              <div className="relative h-full flex items-center justify-center bg-gray-900/20">
-                <img
-                  src={currentImage}
-                  alt={`${project.title} - ${currentImageIndex + 1}`}
-                  className="max-w-full max-h-full object-contain"
-                />
+              <div className="relative h-full flex items-center justify-center bg-gray-900/20 overflow-hidden">
+                {/* Absolutely fixed size container - never changes */}
+                <div className="w-full h-full flex items-center justify-center p-4">
+                  <div
+                    className="flex items-center justify-center bg-white/5 rounded-lg shadow-lg border border-white/10 min-h-[200px] md:min-h-[180px] lg:min-h-[160px]"
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      maxWidth: "100%",
+                      maxHeight: "100%",
+                      aspectRatio: "4/3",
+                      minWidth: "200px",
+                    }}
+                  >
+                    <div
+                      className="w-full h-full flex items-center justify-center p-2"
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        maxWidth: "100%",
+                        maxHeight: "100%",
+                      }}
+                    >
+                      <img
+                        src={currentImage}
+                        alt={`${project.title} - ${currentImageIndex + 1}`}
+                        className="object-contain rounded-lg"
+                        style={{
+                          maxWidth: "100%",
+                          maxHeight: "100%",
+                          width: "auto",
+                          height: "auto",
+                          display: "block",
+                          objectFit: "contain",
+                        }}
+                      />
+                    </div>
+                  </div>
+                </div>
 
                 {/* Image Navigation Arrows */}
                 {project.images && project.images.length > 1 && (
@@ -196,16 +229,16 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
           </div>
 
           {/* Right Side - Project Details */}
-          <div className="lg:w-1/2 p-6 lg:p-8 flex flex-col overflow-hidden">
+          <div className="lg:w-1/2 p-4 sm:p-6 lg:p-8 flex flex-col overflow-hidden">
             {/* Project Title */}
-            <h2 className="text-2xl lg:text-3xl font-bold text-white mb-4">
+            <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-4 leading-tight">
               {project.title}
             </h2>
 
             {/* Full Description - Scrollable */}
-            <div className="flex-1 mb-6 min-h-0">
-              <div className="relative h-full max-h-80 overflow-y-auto pr-3 custom-scrollbar border border-[var(--primary-color)]/20 rounded-lg p-4 bg-[var(--primary-color)]/5">
-                <p className="text-gray-300 leading-relaxed whitespace-pre-line">
+            <div className="flex-1 mb-3 sm:mb-4 lg:mb-6 min-h-0">
+              <div className="relative h-full max-h-48 sm:max-h-60 lg:max-h-72 overflow-y-auto pr-3 custom-scrollbar border border-[var(--primary-color)]/20 rounded-lg p-3 sm:p-4 bg-[var(--primary-color)]/5">
+                <p className="text-gray-300 leading-relaxed whitespace-pre-line text-sm sm:text-base">
                   {project.fullDescription || project.description}
                 </p>
                 {/* Scroll indicator */}
@@ -228,15 +261,15 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
             </div>
 
             {/* Technology Stack */}
-            <div className="mb-6">
-              <h3 className="text-lg font-semibold text-[var(--primary-color)] mb-3">
+            <div className="mb-3 sm:mb-4 lg:mb-6">
+              <h3 className="text-base sm:text-lg font-semibold text-[var(--primary-color)] mb-2 sm:mb-3">
                 Technologies Used
               </h3>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-1.5 sm:gap-2">
                 {project.technologies.map((tech, index) => (
                   <span
                     key={index}
-                    className="px-3 py-1 bg-[var(--primary-color)]/30 text-[var(--primary-color)] rounded-lg border border-[var(--primary-color)]/30 text-sm font-medium"
+                    className="px-2 sm:px-3 py-1 bg-[var(--primary-color)]/30 text-[var(--primary-color)] rounded-lg border border-[var(--primary-color)]/30 text-xs sm:text-sm font-medium"
                   >
                     {tech}
                   </span>
@@ -245,13 +278,13 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
             </div>
 
             {/* Action Buttons */}
-            <div className="flex gap-3">
+            <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
               {project.githubUrl && (
                 <a
                   href={project.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-4 py-2 bg-[var(--primary-color)]/20 text-[var(--primary-color)] rounded-lg border border-[var(--primary-color)]/30 hover:bg-[var(--primary-color)]/30 hover:border-[var(--primary-color)]/50 transition-all duration-200 text-sm font-medium"
+                  className="flex items-center justify-center gap-2 px-3 sm:px-4 py-2 bg-[var(--primary-color)]/20 text-[var(--primary-color)] rounded-lg border border-[var(--primary-color)]/30 hover:bg-[var(--primary-color)]/30 hover:border-[var(--primary-color)]/50 transition-all duration-200 text-xs sm:text-sm font-medium"
                 >
                   <svg
                     className="w-4 h-4"
@@ -268,7 +301,7 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
                 </a>
               )}
               {project.developmentStatus && (
-                <div className="flex items-center gap-2 px-4 py-2 bg-[var(--primary-color)]/20 text-[var(--primary-color)] rounded-lg border border-[var(--primary-color)]/30 text-sm font-medium">
+                <div className="flex items-center justify-center gap-2 px-3 sm:px-4 py-2 bg-[var(--primary-color)]/20 text-[var(--primary-color)] rounded-lg border border-[var(--primary-color)]/30 text-xs sm:text-sm font-medium">
                   <svg
                     className="w-4 h-4"
                     fill="none"
@@ -289,7 +322,7 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
                 <a
                   href={project.pdfUrl}
                   download
-                  className="flex items-center gap-2 px-4 py-2 bg-[var(--secondary-color)]/20 text-[var(--secondary-color)] rounded-lg border border-[var(--secondary-color)]/30 hover:bg-[var(--secondary-color)]/30 hover:border-[var(--secondary-color)]/50 transition-all duration-200 text-sm font-medium"
+                  className="flex items-center justify-center gap-2 px-3 sm:px-4 py-2 bg-[var(--secondary-color)]/20 text-[var(--secondary-color)] rounded-lg border border-[var(--secondary-color)]/30 hover:bg-[var(--secondary-color)]/30 hover:border-[var(--secondary-color)]/50 transition-all duration-200 text-xs sm:text-sm font-medium"
                 >
                   <svg
                     className="w-4 h-4"
@@ -312,7 +345,7 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
                   href={project.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-4 py-2 bg-[var(--secondary-color)]/20 text-[var(--secondary-color)] rounded-lg border border-[var(--secondary-color)]/30 hover:bg-[var(--secondary-color)]/30 hover:border-[var(--secondary-color)]/50 transition-all duration-200 text-sm font-medium"
+                  className="flex items-center justify-center gap-2 px-3 sm:px-4 py-2 bg-[var(--secondary-color)]/20 text-[var(--secondary-color)] rounded-lg border border-[var(--secondary-color)]/30 hover:bg-[var(--secondary-color)]/30 hover:border-[var(--secondary-color)]/50 transition-all duration-200 text-xs sm:text-sm font-medium"
                 >
                   <svg
                     className="w-4 h-4"
