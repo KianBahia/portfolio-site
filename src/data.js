@@ -43,7 +43,7 @@ export const projects = [
       "Hume AI API",
       "iOS Development",
       "UI/UX Design",
-    ], // Add your technologies
+    ], // Add technologies
     githubUrl: "https://github.com/KianBahia/Tactility_Real_Emotion",
     liveUrl: "https://youtube.com/shorts/dpMF2Qc3h5c?si=0dxCHTKZONMK6qOa",
     image: realEmotionLogo, // Main project image
@@ -111,7 +111,7 @@ export const projects = [
   },
 ];
 
-// About section data - customize with your information
+// About section data
 export const aboutData = {
   bio: "I’m Kian, a penultimate-year Computer Science and Artificial Intelligence student at the University of Edinburgh, currently spending a year abroad at EPFL in Switzerland. My passion for technology started young, but recent advancements in AI sparked a deeper interest that led me to specialise in this exciting field. I’ve gained practical experience through a data science internship at Group Amana in Dubai and meaningful projects like HackaHealth’s Real Emotion app, a tool enabling non-verbal individuals to communicate with emotional AI speech, inspired by a teammate’s own story.\n\nOutside of my technical pursuits, I enjoy travelling and exploring the beautiful Swiss landscape through hiking. I stay active with swimming, bouldering, and gym sessions, and also enjoy playing the guitar.",
 

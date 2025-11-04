@@ -1,7 +1,7 @@
-// Example of how to structure your data.js with local images
-// Copy this structure to your actual data.js file
+// how to structure data.js with local images
 
-// Import your profile photo
+
+// Import profile photo
 import profilePhoto from "./assets/images/profile/profile-photo.jpg";
 
 // Import project images
