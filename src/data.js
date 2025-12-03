@@ -182,7 +182,7 @@ export const aboutData = {
   certificates: [
     {
       name: "Artificial Intelligence in Healthcare",
-      issuer: "Royal College of Surgeons of Ireland (RCSI)",
+      issuer: "Royal College of Surgeons of Ireland",
       date: "2025",
     },
     {
