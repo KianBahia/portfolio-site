@@ -118,9 +118,9 @@ export const aboutData = {
   hobbies: [
     "Coding",
     "Swimming",
+    "Skiing",
     "Guitar",
     "Hiking",
-    "Gaming",
     "Travelling",
     "Bouldering",
   ],
@@ -158,6 +158,7 @@ export const aboutData = {
         "C",
         "SQL",
         "API Integration",
+        "Firebase",
       ],
     },
     {
@@ -180,9 +181,14 @@ export const aboutData = {
 
   certificates: [
     {
-      name: "Duke of Edinburgh Gold Award",
-      issuer: "The Duke of Edinburgh's Award",
-      date: "2019-2022",
+      name: "Artificial Intelligence in Healthcare",
+      issuer: "Royal College of Surgeons of Ireland (RCSI)",
+      date: "2025",
+    },
+    {
+      name: "Diploma in Japanese Language",
+      issuer: "Alison",
+      date: "2024",
     },
     {
       name: "Prize for Graphic Communication",
@@ -195,9 +201,9 @@ export const aboutData = {
       date: "2022",
     },
     {
-      name: "Diploma in Japanese Language",
-      issuer: "Alison",
-      date: "2024",
+      name: "Duke of Edinburgh Gold Award",
+      issuer: "The Duke of Edinburgh's Award",
+      date: "2019-2022",
     },
   ],
 };
