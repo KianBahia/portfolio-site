@@ -40,7 +40,7 @@ export const projects = [
       "A mobile app designed to connect EPFL students through events, student associations, and activities",
     fullDescription:
       "EPFL LIFE is a mobile application designed to connect EPFL students through events, associations, and activities.\n\nThe app will allow students to discover and participate in various events, associations, and activities organised by the EPFL community. It features a user-friendly interface, event listings, association information, and activity recommendations to help students find the perfect fit for their interests and schedule.\n\nScreenshots of the final app's design are displayed to showcase the final product.",
-    technologies: ["Kotlin", "Jetpack Compose", "MVVM", "Firebase, Git, Figma"],
+    technologies: ["Kotlin", "Jetpack Compose", "MVVM", "Firebase", "Git", "Figma", "Android Studio"],
     githubUrl: "https://github.com/KianBahia/epfl-life",
     liveUrl: "",
     image: icLauncherPlaystore, // thumbnail
