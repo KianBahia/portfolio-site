@@ -132,19 +132,59 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
                         maxHeight: "100%",
                       }}
                     >
-                      <img
-                        src={currentImage}
-                        alt={`${project.title} - ${currentImageIndex + 1}`}
-                        className="object-contain rounded-lg"
-                        style={{
-                          maxWidth: "100%",
-                          maxHeight: "100%",
-                          width: "auto",
-                          height: "auto",
-                          display: "block",
-                          objectFit: "contain",
-                        }}
-                      />
+                      {/* Check if currentImage is a side-by-side pair (object) or single image (string) */}
+                      {typeof currentImage === "object" &&
+                      currentImage.left &&
+                      currentImage.right ? (
+                        // Side-by-side image pair
+                        <div className="w-full h-full flex gap-2 items-center justify-center">
+                          <img
+                            src={currentImage.left}
+                            alt={`${project.title} - ${
+                              currentImageIndex + 1
+                            } (left)`}
+                            className="object-contain rounded-lg flex-1"
+                            style={{
+                              maxWidth: "50%",
+                              maxHeight: "100%",
+                              width: "auto",
+                              height: "auto",
+                              display: "block",
+                              objectFit: "contain",
+                            }}
+                          />
+                          <img
+                            src={currentImage.right}
+                            alt={`${project.title} - ${
+                              currentImageIndex + 1
+                            } (right)`}
+                            className="object-contain rounded-lg flex-1"
+                            style={{
+                              maxWidth: "50%",
+                              maxHeight: "100%",
+                              width: "auto",
+                              height: "auto",
+                              display: "block",
+                              objectFit: "contain",
+                            }}
+                          />
+                        </div>
+                      ) : (
+                        // Single image
+                        <img
+                          src={currentImage}
+                          alt={`${project.title} - ${currentImageIndex + 1}`}
+                          className="object-contain rounded-lg"
+                          style={{
+                            maxWidth: "100%",
+                            maxHeight: "100%",
+                            width: "auto",
+                            height: "auto",
+                            display: "block",
+                            objectFit: "contain",
+                          }}
+                        />
+                      )}
                     </div>
                   </div>
                 </div>

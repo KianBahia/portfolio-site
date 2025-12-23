@@ -18,18 +18,40 @@ import realEmotionShortcuts from "./assets/images/projects/real-emotion/shortcut
 import realEmotionText from "./assets/images/projects/real-emotion/text.jpeg";
 
 // Import EPFL Life project images
-import epflLifeLogo from "./assets/images/projects/epfl-life/EPFLLifeLogo.png";
-import epflLifeAllMockups from "./assets/images/projects/epfl-life/AllMockups.png";
-import epflLifeMU1 from "./assets/images/projects/epfl-life/MUuserFlow1.png";
-import epflLifeMU2 from "./assets/images/projects/epfl-life/MUuserFlow2.png";
-import epflLifeMU3 from "./assets/images/projects/epfl-life/MUuserFlow3.png";
-import epflLifeMU4 from "./assets/images/projects/epfl-life/MUuserFlow4.png";
-import epflLifeMU5 from "./assets/images/projects/epfl-life/MUuserFlow5.png";
-import epflLifeMU6 from "./assets/images/projects/epfl-life/MUuserFlow6.png";
-import epflLifeMU7 from "./assets/images/projects/epfl-life/MUuserFlow7.png";
+import epflLifeHomeScreen from "./assets/images/projects/epfl-life/homeScreen.jpg";
+import epflLifeHomeScreen2 from "./assets/images/projects/epfl-life/homeScreen2.jpg";
+import epflLifeEventScreen3Scroll from "./assets/images/projects/epfl-life/eventScreen3Scroll.jpg";
+import epflLifeCalendar from "./assets/images/projects/epfl-life/calendar.jpg";
+import epflLifeAssocScreen from "./assets/images/projects/epfl-life/assocScreen.jpg";
+import epflLifeAssociationBrowser from "./assets/images/projects/epfl-life/associationBrowser.jpg";
+import epflLifeSubscribeAssoc from "./assets/images/projects/epfl-life/subscribeAssoc.jpg";
+import icLauncherPlaystore from "./assets/images/projects/epfl-life/ic_launcher-playstore.png";
+import eventScreen3 from "./assets/images/projects/epfl-life/eventScreen3.jpg";
+import assocScreen2 from "./assets/images/projects/epfl-life/assocScreen2.jpg";
+import calendar2 from "./assets/images/projects/epfl-life/calendarScreen2.jpg";
+
+
 
 // Your project data - edit descriptions and add your information
 export const projects = [
+  {
+    title: "EPFL LIFE",
+    description:
+      "A mobile app designed to connect EPFL students through events, student associations, and activities",
+    fullDescription:
+      "EPFL LIFE is a mobile application designed to connect EPFL students through events, associations, and activities.\n\nThe app will allow students to discover and participate in various events, associations, and activities organised by the EPFL community. It features a user-friendly interface, event listings, association information, and activity recommendations to help students find the perfect fit for their interests and schedule.\n\nScreenshots of the final app's design are displayed to showcase the final product.",
+    technologies: ["Kotlin", "Jetpack Compose", "MVVM", "Firebase, Git, Figma"],
+    githubUrl: "https://github.com/KianBahia/epfl-life",
+    liveUrl: "",
+    image: icLauncherPlaystore, // thumbnail
+    images: [
+      { left: epflLifeHomeScreen, right: epflLifeHomeScreen2 }, // Side by side view
+      { left: eventScreen3, right: epflLifeEventScreen3Scroll },
+      { left: epflLifeSubscribeAssoc, right: epflLifeAssociationBrowser },
+      { left: epflLifeAssocScreen, right: assocScreen2 },
+      { left: epflLifeCalendar, right: calendar2 },
+    ], // All EPFL Life screenshots as gallery
+  },
   {
     title: "Real Emotion",
     description:
@@ -87,27 +109,6 @@ export const projects = [
     image: steamReportScreenshot, // PDF screenshot thumbnail
     images: [], // No image gallery for PDF projects
     pdfUrl: steamReportPDF, // PDF viewer will be used
-  },
-  {
-    title: "EPFL LIFE",
-    description:
-      "A mobile application designed to connect EPFL students through events, clubs, and activities",
-    fullDescription:
-      "Currently in development, EPFL LIFE is a mobile application designed to connect EPFL students through events, associations, and activities.\n\nThe app will allow students to discover and participate in various events, associations, and activities organised by the EPFL community. It features a user-friendly interface, event listings, club information, and activity recommendations to help students find the perfect fit for their interests and schedule.\n\nFigma mockups currently displayed to showcase the app's design and functionality.",
-    technologies: ["Kotlin", "Jetpack Compose", "MVVM", "Firebase"],
-    githubUrl: "https://github.com/KianBahia/epfl-life",
-    liveUrl: "",
-    image: epflLifeLogo, // Logo as thumbnail
-    images: [
-      epflLifeMU1,
-      epflLifeMU2,
-      epflLifeMU3,
-      epflLifeMU4,
-      epflLifeMU5,
-      epflLifeMU6,
-      epflLifeMU7,
-      epflLifeAllMockups,
-    ], // All MU images as gallery
   },
 ];
 
