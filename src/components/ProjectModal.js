@@ -309,7 +309,7 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
                 {project.technologies.map((tech, index) => (
                   <span
                     key={index}
-                    className="px-2 sm:px-3 py-1 bg-[var(--primary-color)]/30 text-[var(--primary-color)] rounded-lg border border-[var(--primary-color)]/30 text-xs sm:text-sm font-medium"
+                    className="px-2 sm:px-3 py-1 bg-[var(--primary-color)]/30 text-[var(--primary-color)] rounded-lg border border-[var(--primary-30)] text-xs sm:text-sm font-medium"
                   >
                     {tech}
                   </span>
@@ -324,7 +324,7 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
                   href={project.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 px-3 sm:px-4 py-2 bg-[var(--primary-color)]/20 text-[var(--primary-color)] rounded-lg border border-[var(--primary-color)]/30 hover:bg-[var(--primary-color)]/30 hover:border-[var(--primary-color)]/50 transition-all duration-200 text-xs sm:text-sm font-medium"
+                  className="flex items-center justify-center gap-2 px-3 sm:px-4 py-2 bg-[var(--primary-color)]/20 text-[var(--primary-color)] rounded-lg border border-[var(--primary-30)] hover:bg-[var(--primary-color)]/30 hover:border-[var(--primary-color)]/50 transition-all duration-200 text-xs sm:text-sm font-medium"
                 >
                   <svg
                     className="w-4 h-4"
@@ -362,7 +362,7 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
                 <a
                   href={project.pdfUrl}
                   download
-                  className="flex items-center justify-center gap-2 px-3 sm:px-4 py-2 bg-[var(--secondary-color)]/20 text-[var(--secondary-color)] rounded-lg border border-[var(--secondary-color)]/30 hover:bg-[var(--secondary-color)]/30 hover:border-[var(--secondary-color)]/50 transition-all duration-200 text-xs sm:text-sm font-medium"
+                  className="flex items-center justify-center gap-2 px-3 sm:px-4 py-2 bg-[var(--secondary-color)]/20 text-[var(--secondary-color)] rounded-lg border border-[var(--secondary-color)] hover:bg-[var(--secondary-color)]/30 hover:border-[var(--secondary-color)] transition-all duration-200 text-xs sm:text-sm font-medium"
                 >
                   <svg
                     className="w-4 h-4"
@@ -385,7 +385,7 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
                   href={project.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 px-3 sm:px-4 py-2 bg-[var(--secondary-color)]/20 text-[var(--secondary-color)] rounded-lg border border-[var(--secondary-color)]/30 hover:bg-[var(--secondary-color)]/30 hover:border-[var(--secondary-color)]/50 transition-all duration-200 text-xs sm:text-sm font-medium"
+                  className="flex items-center justify-center gap-2 px-3 sm:px-4 py-2 bg-[var(--secondary-color)]/20 text-[var(--secondary-color)] rounded-lg border border-[var(--secondary-color)] hover:bg-[var(--secondary-color)]/30 hover:border-[var(--secondary-color)] transition-all duration-200 text-xs sm:text-sm font-medium"
                 >
                   <svg
                     className="w-4 h-4"

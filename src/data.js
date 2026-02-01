@@ -30,17 +30,30 @@ import eventScreen3 from "./assets/images/projects/epfl-life/eventScreen3.jpg";
 import assocScreen2 from "./assets/images/projects/epfl-life/assocScreen2.jpg";
 import calendar2 from "./assets/images/projects/epfl-life/calendarScreen2.jpg";
 
-
+// Import EcoMeet project images
+import ecomeetScreenshot from "./assets/images/projects/ecoMeet/ecomeetScreenshot.png";
+import planeRender from "./assets/images/projects/ecoMeet/planeRender.png";
+import EMScreenshot1 from "./assets/images/projects/ecoMeet/screenshot1.jpg";
+import EMScreenshot2 from "./assets/images/projects/ecoMeet/screenshot2.jpg";
+import EMScreenshot3 from "./assets/images/projects/ecoMeet/screenshot3.jpg";
 
 // Your project data - edit descriptions and add your information
 export const projects = [
   {
     title: "EPFL LIFE",
     description:
-      "A mobile app designed to connect EPFL students through events, student associations, and activities",
+      "A mobile app designed to connect EPFL students through events, student associations, and activities.",
     fullDescription:
       "EPFL LIFE is a mobile application designed to connect EPFL students through events, associations, and activities.\n\nThe app will allow students to discover and participate in various events, associations, and activities organised by the EPFL community. It features a user-friendly interface, event listings, association information, and activity recommendations to help students find the perfect fit for their interests and schedule.\n\nScreenshots of the final app's design are displayed to showcase the final product.",
-    technologies: ["Kotlin", "Jetpack Compose", "MVVM", "Firebase", "Git", "Figma", "Android Studio"],
+    technologies: [
+      "Kotlin",
+      "Jetpack Compose",
+      "MVVM",
+      "Firebase",
+      "Git",
+      "Figma",
+      "Android Studio",
+    ],
     githubUrl: "https://github.com/KianBahia/epfl-life",
     liveUrl: "",
     image: icLauncherPlaystore, // thumbnail
@@ -53,9 +66,34 @@ export const projects = [
     ], // All EPFL Life screenshots as gallery
   },
   {
+    title: "EcoMeet",
+    description:
+      "A global meeting optimisation tool built at DurHackX, awarded Runner-Up by QRT, using real flight data to minimise travel impact.",
+    fullDescription:
+      "EcoMeet is a global meeting optimisation tool built at DurHack X, awarded Runner-Up in Qube Research & Technologies’ “Meeting in the Middle” challenge, using real flight data to minimise travel impact.\n\nThe tool uses real flight data to analyse the environmental impact of different meeting locations and routes, and provides recommendations for minimising travel impact. It features a user-friendly interface, data visualisation, and a range of tools to help users make informed decisions about their meetings.\n\nI led frontend development, creating the React interface, data visualisation, and integration with the FastAPI backend. The tool demonstrates how technology can be used to improve sustainability in everyday life.",
+    technologies: [
+      "React",
+      "Cesium",
+      "FastAPI",
+      "Blender",
+      "Python",
+      "Gemini API",
+    ],
+    githubUrl: "https://github.com/GeorgeTheGGamer/durhack2025",
+    liveUrl: "https://youtu.be/SSPweZEMFiw",
+    image: planeRender, // thumbnail
+    images: [
+      ecomeetScreenshot,
+      EMScreenshot1,
+      EMScreenshot2,
+      EMScreenshot3,
+      planeRender,
+    ], // ecoMeet screenshots
+  },
+  {
     title: "Real Emotion",
     description:
-      "A React Native iOS app built at EPFL during HackaHealth 2025, designed to help non-verbal individuals communicate naturally and emotionally through AI-generated speech.",
+      "A React Native iOS app built at EPFL during HackaHealth 2025.",
     fullDescription:
       "Real Emotion is a React Native iOS app built at EPFL during HackaHealth 2025, designed to help non-verbal individuals communicate naturally and emotionally through AI-generated speech.\n\nThe app leverages the latest advancements in AI-generated speech synthesis to provide users with a natural and expressive communication experience. It features a user-friendly interface, voice customisation options, and a range of text-to-speech functionalities to help users communicate their thoughts and emotions effectively.\n\nI led frontend development, creating the React Native interface, voice generation logic, and integration with the AI speech synthesis API. The app demonstrates how AI can enhance communication for individuals with special needs and improve accessibility in everyday interactions.",
     technologies: [
@@ -81,9 +119,9 @@ export const projects = [
   {
     title: "Healix",
     description:
-      "A blockchain-based diary app enabling users to share moods and messages publicly or privately, with private posts encrypted on-chain using SEAL for full data privacy.",
+      "A blockchain diary app enabling users to share moods and messages publicly or privately, with private posts encrypted on-chain.",
     fullDescription:
-      "Healix is a decentralised mental-health diary built on the Sui blockchain, designed to give users complete control over their emotional data.\n\nUsers can post moods and short messages either publicly, which is visible to everyone pseudo-anonymously, or privately, where posts are encrypted directly on-chain using SEAL and accessible only to allowlisted users.\n\nI led frontend development, creating the React-based interface, wallet integration, and logic to fetch, decrypt, and display encrypted messages from the blockchain in a secure community feed.\n\nHealix demonstrates how blockchain can protect sensitive data through transparent encryption and user-owned privacy.",
+      "Healix is a decentralised mental-health diary built on the Sui blockchain, designed to give users complete control over their emotional data.\n\nUsers can post moods and short messages either publicly, which is visible to everyone pseudo-anonymously, or privately, where posts are encrypted directly on-chain using SEAL and accessible only to allowlisted users.\n\nI led frontend development, creating the React-based interface, wallet integration, and logic to fetch, decrypt, and display encrypted messages from the blockchain in a secure community feed.",
     technologies: ["React", "Next.js", "Tailwind CSS", "Sui", "SEAL"],
     githubUrl: "https://github.com/KianBahia/SUI_Hack",
     liveUrl: "https://www.youtube.com/watch?v=dAUoh2U_bx8",
@@ -93,7 +131,7 @@ export const projects = [
   {
     title: "Steam Data Science Report",
     description:
-      "A comprehensive data science analysis of 140,000+ Steam games investigating whether increased game releases correlate with declining review scores over time.",
+      "A data science analysis of 140,000+ Steam games investigating whether increased game releases correlate with declining review scores over time.",
     fullDescription:
       "This comprehensive data science project explores trends in game quality on the Steam platform, investigating whether the rapid increase in annual game releases has led to a decline in average review scores.\n\nUsing a dataset of 140,000+ games scraped from the Steam API and SteamSpy, the analysis performs extensive data cleaning and merging using pandas, applies regression analysis and hypothesis testing (R², p-value) to examine the relationship between release volume and review quality, and uses time series forecasting (ARIMA) to predict future trends in game releases and review scores.\n\nKey findings reveal a statistically significant decline in review scores as game releases surged post-2013, with forecasts suggesting that by 2029, over 85% of released games may fall below the historical average review score.\n\nThe project demonstrates proficiency in data analysis, statistical modeling, time series forecasting, and data visualisation techniques, showcasing the ability to extract meaningful insights from large datasets and present findings in a clear, professional manner.",
     technologies: [
@@ -114,7 +152,7 @@ export const projects = [
 
 // About section data
 export const aboutData = {
-  bio: "I’m Kian, a penultimate-year Computer Science and Artificial Intelligence student at the University of Edinburgh, currently spending a year abroad at EPFL in Switzerland. My passion for technology started young, but recent advancements in AI sparked a deeper interest that led me to specialise in this exciting field. I’ve gained practical experience through a data science internship at Group Amana in Dubai and meaningful projects like HackaHealth’s Real Emotion app, a tool enabling non-verbal individuals to communicate with emotional AI speech, inspired by a teammate’s own story.\n\nOutside of my technical pursuits, I enjoy travelling and exploring the beautiful Swiss landscape through hiking. I stay active with swimming, bouldering, and gym sessions, and also enjoy playing the guitar.",
+  bio: "I’m Kian, a penultimate-year Computer Science and Artificial Intelligence student at the University of Edinburgh, currently spending a year abroad at EPFL in Switzerland. My passion for technology started young, but recent advancements in AI sparked a deeper interest that led me to specialise in this exciting field. I’ve gained practical experience through a data science internship at Group Amana in Dubai and a number of meaningful projects.\n\nOutside of my technical pursuits, I enjoy travelling and exploring the beautiful Swiss landscape through hiking and skiing. I stay active with swimming, bouldering, and gym sessions, and also enjoy playing the guitar.",
 
   hobbies: [
     "Coding",

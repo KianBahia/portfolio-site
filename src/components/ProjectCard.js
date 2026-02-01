@@ -128,7 +128,7 @@ const ProjectCard = ({ project }) => {
                   href={project.pdfUrl}
                   download
                   onClick={(e) => e.stopPropagation()}
-                  className="flex items-center gap-2 px-4 py-2 bg-[var(--secondary-color)]/20 text-[var(--secondary-color)] rounded-lg border border-[var(--secondary-color)]/30 hover:bg-[var(--secondary-color)]/30 hover:border-[var(--secondary-color)]/50 transition-all duration-200 text-sm font-medium"
+                  className="flex items-center gap-2 px-4 py-2 bg-[var(--secondary-color)]/20 text-[var(--secondary-color)] rounded-lg border border-[var(--secondary-color)] hover:bg-[var(--secondary-color)]/30 hover:border-[var(--secondary-color)] transition-all duration-200 text-sm font-medium"
                 >
                   <svg
                     className="w-4 h-4"
@@ -152,7 +152,7 @@ const ProjectCard = ({ project }) => {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={(e) => e.stopPropagation()}
-                  className="flex items-center gap-2 px-4 py-2 bg-[var(--secondary-color)]/20 text-[var(--secondary-color)] rounded-lg border border-[var(--secondary-color)]/30 hover:bg-[var(--secondary-color)]/30 hover:border-[var(--secondary-color)]/50 transition-all duration-200 text-sm font-medium"
+                  className="flex items-center gap-2 px-4 py-2 bg-[var(--secondary-color)]/20 text-[var(--secondary-color)] rounded-lg border border-[var(--secondary-color)] hover:bg-[var(--secondary-color)]/30 hover:border-[var(--secondary-color)] transition-all duration-200 text-sm font-medium"
                 >
                   <svg
                     className="w-4 h-4"
