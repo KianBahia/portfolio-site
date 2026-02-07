@@ -37,6 +37,11 @@ import EMScreenshot1 from "./assets/images/projects/ecoMeet/screenshot1.jpg";
 import EMScreenshot2 from "./assets/images/projects/ecoMeet/screenshot2.jpg";
 import EMScreenshot3 from "./assets/images/projects/ecoMeet/screenshot3.jpg";
 
+// Import Asa Datafest 2025 project images
+import asaLogo from "./assets/images/projects/asa-datafest/datafestLogo.png";
+import asaScreenshot1 from "./assets/images/projects/asa-datafest/insight1.png";
+import asaScreenshot2 from "./assets/images/projects/asa-datafest/insight2.png";
+
 // Your project data - edit descriptions and add your information
 export const projects = [
   {
@@ -79,7 +84,7 @@ export const projects = [
       "Python",
       "Gemini API",
     ],
-    githubUrl: "https://github.com/GeorgeTheGGamer/durhack2025",
+    githubUrl: "https://github.com/carlkaziboni/durhack2025",
     liveUrl: "https://youtu.be/SSPweZEMFiw",
     image: planeRender, // thumbnail
     images: [
@@ -147,6 +152,26 @@ export const projects = [
     image: steamReportScreenshot, // PDF screenshot thumbnail
     images: [], // No image gallery for PDF projects
     pdfUrl: steamReportPDF, // PDF viewer will be used
+  },
+  {
+    title: "ASA Datafest 2025",
+    description:
+      "Winner of the ”Best Use of External Dataset” at ASA Datafest 2025.",
+    fullDescription:
+      "We analysed 200K+ commercial real-estate lease records to uncover structural drivers behind industry location decisions. A major challenge was that ~12,500 records were missing an internal_industry classification, limiting downstream analysis. We implemented a K-Nearest Neighbours (KNN) classifier to reclassify these entries, leveraging the assumption that firms with similar infrastructure requirements (e.g., tech clusters, logistics-heavy industries) co-locate geographically. This increased our usable dataset by 42.6%, enabling far more robust temporal and spatial analysis. \n\n Using the enriched dataset, we examined changes in industry entry leases between 2018 and 2024. We found a significant rise in construction-sector leases in Illinois, California, Florida, and North Carolina. Investigating potential drivers, we tested correlations with market stability and tax changes, but found limited explanatory power. By integrating external US rail network data and visualising lease density alongside major rail corridors, we identified Illinois as a uniquely connected national rail hub. This connectivity provides construction firms with efficient, low-cost transportation of heavy materials nationwide. Further investigation revealed the spike aligned with the 2019 launch of the $44.8B “Rebuild Illinois” infrastructure programme, which increased demand for staging space, material storage, and temporary offices. The project demonstrated how combining machine learning, external infrastructure data, and policy context can transform incomplete commercial datasets into actionable economic insight.",
+    technologies: [
+      "Python",
+      "ML",
+      "Leaflet",
+      "Big Data",
+      "HTML/CSS",
+      "Matplotlib",
+      "Jupyter",
+    ],
+    githubUrl: "https://github.com/GlenFilson/ASADatafest25",
+    liveUrl: "",
+    image: asaLogo,
+    images: [asaScreenshot1, asaScreenshot2],
   },
 ];
 
