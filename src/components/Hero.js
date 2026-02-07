@@ -83,7 +83,7 @@ const Hero = () => {
                 href="#about"
                 className="px-8 py-3 border-2 border-white/50 text-white rounded-lg font-medium hover:bg-white/20 transition-all transform hover:scale-105 backdrop-blur-sm"
               >
-                Learn More
+                About Me
               </a>
             </div>
 
