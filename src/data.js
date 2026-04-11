@@ -82,7 +82,7 @@ export const projects = [
     description:
       "A Telegram Mini App that lets content creators monetise posts, powered by TON, allowing creators to keep up to 95% of their earnings.",
     fullDescription:
-      "Ribbit is a Telegram Mini App that enables content creators to monetise their work directly through a seamless, blockchain-powered subscription and pay-per-post platform. Built solo for the BSA AlphaTon Hackathon (winning a podium prize and attracting investor interest), it lets creators publish exclusive content that fans unlock using in-app tokens. Users purchase Telegram Stars natively within Telegram, which are converted into platform tokens. Creators can then withdraw their earnings directly as TON cryptocurrency. All blockchain activity runs silently in the background, keeping the experience familiar and frictionless for everyday users while ensuring creators take home up to 95% of revenue. ",
+      "Ribbit is a Telegram Mini App that enables content creators to monetise their work directly through a seamless, blockchain-powered subscription and pay-per-post platform. \n\n Built solo for the BSA AlphaTon Hackathon (winning a podium prize and attracting investor interest), it lets creators publish exclusive content that fans unlock using in-app tokens. \n\n Users purchase Telegram Stars natively within Telegram, which are converted into platform tokens. Creators can then withdraw their earnings directly as TON cryptocurrency. \n\nAll blockchain activity runs silently in the background, keeping the experience familiar and frictionless for everyday users while ensuring creators take home up to 95% of revenue. ",
     technologies: [
       "Next.js",
       "Typescript",
