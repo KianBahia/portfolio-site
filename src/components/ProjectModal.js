@@ -28,7 +28,7 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
   const goToNextImage = useCallback(() => {
     if (project.images && project.images.length > 0) {
       setCurrentImageIndex((prev) =>
-        prev === project.images.length - 1 ? 0 : prev + 1
+        prev === project.images.length - 1 ? 0 : prev + 1,
       );
     }
   }, [project.images]);
@@ -36,7 +36,7 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
   const goToPreviousImage = useCallback(() => {
     if (project.images && project.images.length > 0) {
       setCurrentImageIndex((prev) =>
-        prev === 0 ? project.images.length - 1 : prev - 1
+        prev === 0 ? project.images.length - 1 : prev - 1,
       );
     }
   }, [project.images]);

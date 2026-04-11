@@ -42,6 +42,13 @@ import asaLogo from "./assets/images/projects/asa-datafest/datafestLogo.png";
 import asaScreenshot1 from "./assets/images/projects/asa-datafest/insight1.png";
 import asaScreenshot2 from "./assets/images/projects/asa-datafest/insight2.png";
 
+// Import Ribbit project images
+import ribbitLogo from "./assets/images/projects/ribbit/ribbit-logo.png";
+import ribbitScreenshot1 from "./assets/images/projects/ribbit/ribbit-create-page.png";
+import ribbitScreenshot2 from "./assets/images/projects/ribbit/ribbit-creator-page.png";
+import ribbitScreenshot3 from "./assets/images/projects/ribbit/ribbit-wallet-page.png";
+import ribbitScreenshot4 from "./assets/images/projects/ribbit/ribbit-discover-page.png";
+
 // Your project data - edit descriptions and add your information
 export const projects = [
   {
@@ -69,6 +76,30 @@ export const projects = [
       { left: epflLifeAssocScreen, right: assocScreen2 },
       { left: epflLifeCalendar, right: calendar2 },
     ], // All EPFL Life screenshots as gallery
+  },
+  {
+    title: "Ribbit",
+    description:
+      "A Telegram Mini App that lets content creators monetise posts, powered by TON, allowing creators to keep up to 95% of their earnings.",
+    fullDescription:
+      "Ribbit is a Telegram Mini App that enables content creators to monetise their work directly through a seamless, blockchain-powered subscription and pay-per-post platform. Built solo for the BSA AlphaTon Hackathon (winning a podium prize and attracting investor interest), it lets creators publish exclusive content that fans unlock using in-app tokens. Users purchase Telegram Stars natively within Telegram, which are converted into platform tokens. Creators can then withdraw their earnings directly as TON cryptocurrency. All blockchain activity runs silently in the background, keeping the experience familiar and frictionless for everyday users while ensuring creators take home up to 95% of revenue. ",
+    technologies: [
+      "Next.js",
+      "Typescript",
+      "Tailwind CSS",
+      "Telegram SDK",
+      "TON",
+      "HTTP x402",
+    ],
+    githubUrl: "https://github.com/TipTok-App/Ribbit",
+    liveUrl: "",
+    image: ribbitLogo, // thumbnail
+    images: [
+      ribbitScreenshot4,
+      ribbitScreenshot2,
+      ribbitScreenshot3,
+      ribbitScreenshot1,
+    ],
   },
   {
     title: "EcoMeet",
@@ -220,6 +251,7 @@ export const aboutData = {
         "Java",
         "Kotlin",
         "C",
+        "C++",
         "SQL",
         "API Integration",
         "Firebase",
@@ -238,6 +270,9 @@ export const aboutData = {
         "Figma",
         "Photoshop",
         "Premiere Pro",
+        "Final Cut Pro",
+        "DaVinci Resolve",
+        "Fusion 360",
         "Blender",
       ],
     },
