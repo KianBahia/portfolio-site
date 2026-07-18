@@ -49,8 +49,41 @@ import ribbitScreenshot2 from "./assets/images/projects/ribbit/ribbit-creator-pa
 import ribbitScreenshot3 from "./assets/images/projects/ribbit/ribbit-wallet-page.png";
 import ribbitScreenshot4 from "./assets/images/projects/ribbit/ribbit-discover-page.png";
 
+// Import Water Caustics Renderer project images
+import FinalReport from "./assets/documents/ComputerGraphicsFinalReport.pdf";
+import finalFrame from "./assets/images/projects/nori-renderer/finalFrame.png";
+import finalVideo from "./assets/images/projects/nori-renderer/finalVideo.gif";
+
 // Your project data - edit descriptions and add your information
 export const projects = [
+  {
+    title: "Water Caustics Renderer",
+    description:
+      "Caustics renderer built from scratch in C++ using Specular Manifold Sampling, Beer's Law water attenuation, and image texture mapping.",
+    fullDescription:
+      "A physically-based renderer built as a final assignment for the Advanced Computer Graphics master's course at EPFL, extending the Nori C++ ray tracing framework with four custom features.\n\nThe core contribution is Specular Manifold Sampling (SMS), implemented by following the techniques from Zeltner et al. (Specular Manifold Sampling for Rendering High-Frequency Caustics and Glints, 2020) to render water caustics, the rippling light patterns seen on the seafloor beneath a water surface. Standard path tracers cannot find these paths at all which is why water caustics are notoriously difficult to simulate; SMS uses Newton iteration to walk a specular vertex across the water mesh until it satisfies Snell's law exactly, finding valid light paths that would otherwise have zero probability of being sampled.\n\nBeer's Law attenuation models wavelength-dependent absorption as light travels through water. Red wavelengths are absorbed quickly (a=0.45) while blue wavelengths travel furthest (a=0.02), producing the natural blue-green colour shift seen in shallow tropical water.\n\nImage texture mapping replaces flat material colours with baked PNG/JPG textures loaded via stb_image.h, with bilinear interpolation across UV coordinates. Directional lighting adds sun and sky emitters as infinite-distance lights compatible with the existing MIS framework.\n\nThe final scene I produced to showcase these implementations is a tropical island viewed from above, featuring a beach house on a sandy island surrounded by shallow water, with 119 individual textures across all scene objects including rocks, wooden structures, a boat, dock, and furniture. The water animation was produced by exporting 72 OBJ files from Blender, each with slightly different Musgrave displacement parameters along a circular sin/cos path to guarantee a seamless loop, then batch-rendering overnight using a custom PowerShell script that monitors Nori's stdout for the render completion message before automatically saving each frame. The full animation took over 30 hours to render and the 72 frames were combined with ffmpeg into a 3-second looping video at 24fps.",
+    technologies: [
+      "C++",
+      "Path Tracing",
+      "Monte Carlo",
+      "Specular Manifold Sampling",
+      "Nori",
+      "Beer's Law",
+      "Image Texture Mapping",
+      "CMake",
+      "Directional Lighting",
+    ],
+    githubUrl: "https://github.com/KianBahia/cs440-2026-KianBahia",
+    liveUrl: "",
+    image: finalFrame, // thumbnail
+    images: [
+      finalFrame,
+      finalVideo,
+    ], 
+    pdfUrl: FinalReport, 
+  },
+  
+  
   {
     title: "EPFL LIFE",
     description:
@@ -66,7 +99,7 @@ export const projects = [
       "Figma",
       "Android Studio",
     ],
-    githubUrl: "https://github.com/KianBahia/epfl-life",
+    githubUrl: "https://github.com/EPFL-Life/life",
     liveUrl: "",
     image: icLauncherPlaystore, // thumbnail
     images: [
