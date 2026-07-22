@@ -57,7 +57,7 @@ const PDFViewer = ({ pdfUrl, title }) => {
 
       <iframe
         ref={iframeRef}
-        src={`${pdfUrl}#toolbar=1&navpanes=1&scrollbar=1`}
+        src={`${pdfUrl}#toolbar=1&navpanes=0&scrollbar=1`}
         title={title}
         className="w-full h-full border-0"
         onLoad={handleLoad}

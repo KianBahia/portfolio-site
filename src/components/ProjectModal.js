@@ -3,11 +3,20 @@ import PDFViewer from "./PDFViewer";
 
 const ProjectModal = ({ project, isOpen, onClose }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  // "gallery" | "report" — only relevant when a project has both images and a PDF
+  const [mediaView, setMediaView] = useState("gallery");
 
-  // Reset image index when modal opens
+  const hasGallery = Boolean(project?.images?.length > 0);
+  const hasPdf = Boolean(project?.pdfUrl);
+  const hasBothMedia = hasGallery && hasPdf;
+  const showGallery = hasGallery && (!hasPdf || mediaView === "gallery");
+  const showPdf = hasPdf && (!hasGallery || mediaView === "report");
+
+  // Reset gallery/PDF state when modal opens
   useEffect(() => {
     if (isOpen) {
       setCurrentImageIndex(0);
+      setMediaView("gallery");
     }
   }, [isOpen]);
 
@@ -48,10 +57,10 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
 
       if (e.key === "Escape") {
         onClose();
-      } else if (e.key === "ArrowLeft") {
+      } else if (showGallery && e.key === "ArrowLeft") {
         e.preventDefault();
         goToPreviousImage();
-      } else if (e.key === "ArrowRight") {
+      } else if (showGallery && e.key === "ArrowRight") {
         e.preventDefault();
         goToNextImage();
       }
@@ -59,14 +68,11 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
 
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
-  }, [isOpen, onClose, goToPreviousImage, goToNextImage]);
+  }, [isOpen, onClose, showGallery, goToPreviousImage, goToNextImage]);
 
   if (!isOpen || !project) return null;
 
-  const currentImage =
-    project.images && project.images.length > 0
-      ? project.images[currentImageIndex]
-      : null;
+  const currentImage = hasGallery ? project.images[currentImageIndex] : null;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
@@ -101,51 +107,109 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
         </button>
 
         <div className="flex flex-col lg:flex-row h-full relative z-10">
-          {/* Left Side - Image Gallery or PDF Viewer */}
-          <div className="lg:w-1/2 relative">
-            {project.pdfUrl ? (
-              // PDF Viewer for documents
-              <div className="h-full">
-                <PDFViewer pdfUrl={project.pdfUrl} title={project.title} />
+          {/* Left Side - Image Gallery and/or PDF Viewer */}
+          <div className="lg:w-1/2 relative flex flex-col">
+            {hasBothMedia && (
+              <div className="flex gap-1 p-2 z-10">
+                <button
+                  type="button"
+                  onClick={() => setMediaView("gallery")}
+                  className={`flex-1 px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all duration-200 border ${
+                    mediaView === "gallery"
+                      ? "bg-[var(--primary-color)]/40 text-white border-[var(--secondary-color)]/50"
+                      : "bg-black/30 text-white/70 border-[var(--secondary-30)] hover:bg-black/50 hover:text-white"
+                  }`}
+                >
+                  Gallery
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setMediaView("report")}
+                  className={`flex-1 px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all duration-200 border ${
+                    mediaView === "report"
+                      ? "bg-[var(--primary-color)]/40 text-white border-[var(--secondary-color)]/50"
+                      : "bg-black/30 text-white/70 border-[var(--secondary-30)] hover:bg-black/50 hover:text-white"
+                  }`}
+                >
+                  Report
+                </button>
               </div>
-            ) : currentImage ? (
-              <div className="relative h-full flex items-center justify-center bg-gray-900/20 overflow-hidden">
-                {/* Absolutely fixed size container - never changes */}
-                <div className="w-full h-full flex items-center justify-center p-4">
-                  <div
-                    className="flex items-center justify-center bg-white/5 rounded-lg shadow-lg border border-white/10 min-h-[200px] md:min-h-[180px] lg:min-h-[160px]"
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                      maxWidth: "100%",
-                      maxHeight: "100%",
-                      aspectRatio: "4/3",
-                      minWidth: "200px",
-                    }}
-                  >
+            )}
+
+            <div className="flex-1 min-h-0 relative">
+              {showPdf ? (
+                <div className="h-full">
+                  <PDFViewer pdfUrl={project.pdfUrl} title={project.title} />
+                </div>
+              ) : showGallery && currentImage ? (
+                <div className="relative h-full flex items-center justify-center bg-gray-900/20 overflow-hidden">
+                  {/* Absolutely fixed size container - never changes */}
+                  <div className="w-full h-full flex items-center justify-center p-4">
                     <div
-                      className="w-full h-full flex items-center justify-center p-2"
+                      className="flex items-center justify-center bg-white/5 rounded-lg shadow-lg border border-white/10 min-h-[200px] md:min-h-[180px] lg:min-h-[160px]"
                       style={{
                         width: "100%",
                         height: "100%",
                         maxWidth: "100%",
                         maxHeight: "100%",
+                        aspectRatio: "4/3",
+                        minWidth: "200px",
                       }}
                     >
-                      {/* Check if currentImage is a side-by-side pair (object) or single image (string) */}
-                      {typeof currentImage === "object" &&
-                      currentImage.left &&
-                      currentImage.right ? (
-                        // Side-by-side image pair
-                        <div className="w-full h-full flex gap-2 items-center justify-center">
+                      <div
+                        className="w-full h-full flex items-center justify-center p-2"
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          maxWidth: "100%",
+                          maxHeight: "100%",
+                        }}
+                      >
+                        {/* Check if currentImage is a side-by-side pair (object) or single image (string) */}
+                        {typeof currentImage === "object" &&
+                        currentImage.left &&
+                        currentImage.right ? (
+                          // Side-by-side image pair
+                          <div className="w-full h-full flex gap-2 items-center justify-center">
+                            <img
+                              src={currentImage.left}
+                              alt={`${project.title} - ${
+                                currentImageIndex + 1
+                              } (left)`}
+                              className="object-contain rounded-lg flex-1"
+                              style={{
+                                maxWidth: "50%",
+                                maxHeight: "100%",
+                                width: "auto",
+                                height: "auto",
+                                display: "block",
+                                objectFit: "contain",
+                              }}
+                            />
+                            <img
+                              src={currentImage.right}
+                              alt={`${project.title} - ${
+                                currentImageIndex + 1
+                              } (right)`}
+                              className="object-contain rounded-lg flex-1"
+                              style={{
+                                maxWidth: "50%",
+                                maxHeight: "100%",
+                                width: "auto",
+                                height: "auto",
+                                display: "block",
+                                objectFit: "contain",
+                              }}
+                            />
+                          </div>
+                        ) : (
+                          // Single image
                           <img
-                            src={currentImage.left}
-                            alt={`${project.title} - ${
-                              currentImageIndex + 1
-                            } (left)`}
-                            className="object-contain rounded-lg flex-1"
+                            src={currentImage}
+                            alt={`${project.title} - ${currentImageIndex + 1}`}
+                            className="object-contain rounded-lg"
                             style={{
-                              maxWidth: "50%",
+                              maxWidth: "100%",
                               maxHeight: "100%",
                               width: "auto",
                               height: "auto",
@@ -153,51 +217,67 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
                               objectFit: "contain",
                             }}
                           />
-                          <img
-                            src={currentImage.right}
-                            alt={`${project.title} - ${
-                              currentImageIndex + 1
-                            } (right)`}
-                            className="object-contain rounded-lg flex-1"
-                            style={{
-                              maxWidth: "50%",
-                              maxHeight: "100%",
-                              width: "auto",
-                              height: "auto",
-                              display: "block",
-                              objectFit: "contain",
-                            }}
-                          />
-                        </div>
-                      ) : (
-                        // Single image
-                        <img
-                          src={currentImage}
-                          alt={`${project.title} - ${currentImageIndex + 1}`}
-                          className="object-contain rounded-lg"
-                          style={{
-                            maxWidth: "100%",
-                            maxHeight: "100%",
-                            width: "auto",
-                            height: "auto",
-                            display: "block",
-                            objectFit: "contain",
-                          }}
-                        />
-                      )}
+                        )}
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                {/* Image Navigation Arrows */}
-                {project.images && project.images.length > 1 && (
-                  <>
-                    <button
-                      onClick={goToPreviousImage}
-                      className="absolute left-4 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-black/50 hover:bg-black/70 rounded-full flex items-center justify-center text-white transition-all duration-200"
-                    >
+                  {/* Image Navigation Arrows */}
+                  {project.images && project.images.length > 1 && (
+                    <>
+                      <button
+                        onClick={goToPreviousImage}
+                        className="absolute left-4 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-black/50 hover:bg-black/70 rounded-full flex items-center justify-center text-white transition-all duration-200"
+                      >
+                        <svg
+                          className="w-6 h-6"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M15 19l-7-7 7-7"
+                          />
+                        </svg>
+                      </button>
+
+                      <button
+                        onClick={goToNextImage}
+                        className="absolute right-4 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-black/50 hover:bg-black/70 rounded-full flex items-center justify-center text-white transition-all duration-200"
+                      >
+                        <svg
+                          className="w-6 h-6"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M9 5l7 7-7 7"
+                          />
+                        </svg>
+                      </button>
+                    </>
+                  )}
+
+                  {/* Image Counter */}
+                  {project.images && project.images.length > 1 && (
+                    <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/50 px-3 py-1 rounded-full text-white text-sm">
+                      {currentImageIndex + 1} / {project.images.length}
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <div className="h-full flex items-center justify-center bg-gradient-to-br from-[var(--primary-10)] to-[var(--secondary-10)]">
+                  <div className="text-center">
+                    <div className="w-16 h-16 bg-[var(--primary-color)]/30 rounded-full flex items-center justify-center mx-auto mb-3">
                       <svg
-                        className="w-6 h-6"
+                        className="w-8 h-8 text-[var(--primary-color)]"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -206,66 +286,20 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
                           strokeLinecap="round"
                           strokeLinejoin="round"
                           strokeWidth="2"
-                          d="M15 19l-7-7 7-7"
+                          d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
                         />
                       </svg>
-                    </button>
-
-                    <button
-                      onClick={goToNextImage}
-                      className="absolute right-4 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-black/50 hover:bg-black/70 rounded-full flex items-center justify-center text-white transition-all duration-200"
-                    >
-                      <svg
-                        className="w-6 h-6"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M9 5l7 7-7 7"
-                        />
-                      </svg>
-                    </button>
-                  </>
-                )}
-
-                {/* Image Counter */}
-                {project.images && project.images.length > 1 && (
-                  <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/50 px-3 py-1 rounded-full text-white text-sm">
-                    {currentImageIndex + 1} / {project.images.length}
+                    </div>
+                    <p className="text-[var(--primary-color)] font-medium">
+                      No Images Available
+                    </p>
+                    <p className="text-[var(--primary-color)]/70 text-sm">
+                      Images coming soon
+                    </p>
                   </div>
-                )}
-              </div>
-            ) : (
-              <div className="h-full flex items-center justify-center bg-gradient-to-br from-[var(--primary-10)] to-[var(--secondary-10)]">
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-[var(--primary-color)]/30 rounded-full flex items-center justify-center mx-auto mb-3">
-                    <svg
-                      className="w-8 h-8 text-[var(--primary-color)]"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-                      />
-                    </svg>
-                  </div>
-                  <p className="text-[var(--primary-color)] font-medium">
-                    No Images Available
-                  </p>
-                  <p className="text-[var(--primary-color)]/70 text-sm">
-                    Images coming soon
-                  </p>
                 </div>
-              </div>
-            )}
+              )}
+            </div>
           </div>
 
           {/* Right Side - Project Details */}

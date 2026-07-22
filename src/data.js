@@ -54,6 +54,10 @@ import FinalReport from "./assets/documents/ComputerGraphicsFinalReport.pdf";
 import finalFrame from "./assets/images/projects/nori-renderer/finalFrame.png";
 import finalVideo from "./assets/images/projects/nori-renderer/finalVideo.gif";
 
+// Import LEGO Island project images
+import legoIslandScreenshot from "./assets/images/projects/legoIsland/legoIslandScreenshot.png";
+import legoIslandReport from "./assets/documents/LEGO-Island-FINAL-Process-Book.pdf";
+
 // Your project data - edit descriptions and add your information
 export const projects = [
   {
@@ -76,14 +80,10 @@ export const projects = [
     githubUrl: "https://github.com/KianBahia/cs440-2026-KianBahia",
     liveUrl: "",
     image: finalFrame, // thumbnail
-    images: [
-      finalFrame,
-      finalVideo,
-    ], 
-    pdfUrl: FinalReport, 
+    images: [finalFrame, finalVideo],
+    pdfUrl: FinalReport,
   },
-  
-  
+
   {
     title: "EPFL LIFE",
     description:
@@ -109,6 +109,28 @@ export const projects = [
       { left: epflLifeAssocScreen, right: assocScreen2 },
       { left: epflLifeCalendar, right: calendar2 },
     ], // All EPFL Life screenshots as gallery
+  },
+  {
+    title: "LEGO Island Website",
+    description:
+      "An interactive island map visualising 50 years of LEGO history.",
+    fullDescription:
+      "LEGO Island is an interactive data visualisation built for the COM-480 Data Visualisation course at EPFL, presenting 18,457 LEGO set records spanning 1970–2022 as an explorable top-down island map inspired by the 1997 video game of the same name.\n\nEach of the eight geographic districts on the island represents a major LEGO theme (Star Wars, City, Duplo, Technic, etc.), with district badge size scaled proportionally to set count using square-root area scaling. Clicking a district zooms the island toward that region and reveals a bottom-sheet data panel containing four D3 charts: a sets-per-year area timeline, a piece-count histogram, a price trend line, and a top subthemes bar chart. Each panel adopts a per-district accent colour system so every theme feels visually distinct.\n\nLicensed themes (Star Wars, Harry Potter, Marvel) are handled through an 'IP folder' pattern and placed on a separate small island grouping all franchises, where clicking a franchise card loads its full chart suite. A dual-thumb year range slider filters the entire island in real time, rescaling every district marker to reflect only sets released within the selected window, turning the map into a time-travel explorer of LEGO's cultural evolution.\n\nI was responsible for the island SVG layout and district placement, district marker DOM generation, zoom-to-district transform logic, parallax RAF controller, year slider UI and marker rescaling, and the overall CSS architecture. The project is built in vanilla JavaScript with D3 v7 and PapaParse, with no bundler, loading directly in a browser.",
+    technologies: [
+      "D3.js",
+      "JavaScript",
+      "PapaParse",
+      "SVG",
+      "HTML/CSS",
+      "Python",
+      "Pandas",
+    ],
+    githubUrl:
+      "https://github.com/com-480-data-visualization/LEGO-dschungelfledermause", // update with actual repo URL
+    liveUrl:
+      "https://com-480-data-visualization.github.io/LEGO-dschungelfledermause/index.html", // add if hosted
+    image: legoIslandScreenshot,
+    pdfUrl: legoIslandReport,
   },
   {
     title: "Ribbit",
